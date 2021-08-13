@@ -89,9 +89,17 @@
 					</div>
 					<div class="password">
 						<label for="hidden_password">Password</label>
-						<input id="hidden_password" type="password" name="password" placeholder="Password">
+						<input id="hidden_password" type="password" name="password" placeholder="Password" minlength="6">
 						<label for="password2">Confirm Password</label>
-						<input id="password2" type="password" name="password2" placeholder="Confirm Password">
+						<input id="password2" type="password" name="password2" placeholder="Confirm Password" minlength="6">
+					</div>
+					<div class="name">
+						<label for="name">Name</label>
+						<input id="name" type="text" name="name" placeholder="Name">
+					</div>
+					<div class="firstname">
+						<label for="firstname">Firstname</label>
+						<input id="firstname" type="text" name="firstname" placeholder="Firstname">
 					</div>
 					<div class="email">
 						<label for="email">Email</label>
@@ -109,7 +117,7 @@
 						<button class="button" id="register" type="submit" name="register">Register</button>				
 					</div>
 					<?php
-						function addNewMember($username,$password,$email,$address,$phone){
+						function addNewMember($username,$password,$name,$firstname,$email,$address,$phone){
 							$pdo=new PDO("mysql:host=localhost;dbname=eco",'root','');
 							$req=$pdo->prepare("SELECT user_id FROM users WHERE username=? AND email=? limit 1");
 							$req->execute(array($username,$email));
@@ -118,8 +126,8 @@
 							if(count($data)>0){
 								$_SESSION['memberAlreadyExists']='<p style="font-weight: var(--fw-bold); color:#E94F37;">This username already exists.</p>';
 							}else{
-								$req=$pdo->prepare("INSERT INTO users(status,username,password,email,address,phone) VALUES (?,?,?,?,?,?)");
-								$result=$req->execute(array('user',$username,password_hash($password,PASSWORD_DEFAULT),$email,$address,$phone));
+								$req=$pdo->prepare("INSERT INTO users(status,username,password,name,firstname,email,address,phone) VALUES (?,?,?,?,?,?,?,?)");
+								$result=$req->execute(array('user',$username,password_hash($password,PASSWORD_DEFAULT),$name,$firstname,$email,$address,$phone));
 								if($result){
 									$_SESSION['addNewMember']='New Account created !';
 									header('location:index.php');
@@ -146,6 +154,17 @@
 							}else{
 								$_SESSION['updatError']='<p style="font-weight: var(--fw-bold); color:#E94F37;">Cannot leave empty fields.</p>';
 							}
+							if(isset($_POST['name']) && $_POST['name']!=''){
+								$name=htmlspecialchars($_POST['name']);
+							}else{
+								$_SESSION['updatError']='<p style="font-weight: var(--fw-bold); color:#E94F37;">Cannot leave empty fields.</p>';
+							}
+							if(isset($_POST['firstname']) && $_POST['firstname']!=''){
+								$firstname=htmlspecialchars($_POST['firstname']);
+							}else{
+								$_SESSION['updatError']='<p style="font-weight: var(--fw-bold); color:#E94F37;">Cannot leave empty fields.</p>';
+							}
+
 							if(isset($_POST['email']) && $_POST['email']!=''){
 								$email=htmlspecialchars($_POST['email']);
 							}else{
@@ -161,7 +180,7 @@
 							}else{
 								$_SESSION['updatError']='<p style="font-weight: var(--fw-bold); color:#E94F37;">Cannot leave empty fields.</p>';
 							}
-							addNewMember($username,$password,$email,$address,$phone);
+							addNewMember($username,$password,$name,$firstname,$email,$address,$phone);
 						};
 					?>
 				</form>

@@ -145,7 +145,7 @@ a:hover{
     margin: 2% 0;    
 }
 .mustHave_product{
-	width: 30%;
+	width: 18%;
 	margin: 1%;
 }
 .mustHave_product a:hover{opacity: 1;}
@@ -376,7 +376,7 @@ td>img{
     width: 20%;
     margin: 0 40%;
 }
-.username,.password,.email,.address,.phone{
+.username,.password,.name,.firstname,.email,.address,.phone{
 	width: 75%;
 	margin: 0 10%;
 	display: flex;
@@ -407,6 +407,14 @@ td>img{
 #connexion{margin: 0 2%;}
 #hiddenForm{
 	display: none;
+}
+.newMember{
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: var(--fw-bold);
+	padding: 2%;
+    color:#399E5A;
+    font-size: 2rem;
 }
 
 /**************************************************************************/

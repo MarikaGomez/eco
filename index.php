@@ -51,10 +51,16 @@
 					?>
 				</ul>
 			</nav>
+			
 			<?php
-				if(isset($_SESSION['addNewMember'])) echo $_SESSION['addNewMember']; 
-				unset($_SESSION['addNewMember']);
+				if(isset($_SESSION['addNewMember'])){
+					echo "<div class='newMember'>";
+					echo $_SESSION['addNewMember'];
+					echo "</div>";
+					unset($_SESSION['addNewMember']);
+				} 					
 			?>
+
 			<section class="banner">
 				<h1 class="section_banner_title">eco. online store</h1>
 				<h3 class="section_banner_subtitle">SKINCARE, HAIR AND BEAUTY PRODUCT</h3>
