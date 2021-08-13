@@ -12,7 +12,6 @@
 		<!-- JavaScript -->
 		<script type="text/javascript" src="app.js" defer></script>
 	</head>
-
 	<body>
 		<div class="product_grid_container">			
 			<header class="header">

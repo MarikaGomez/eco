@@ -17,7 +17,6 @@
 		<!-- JavaScript -->
 		<script type="text/javascript" src="app.js" defer></script>
 	</head>
-
 	<body>
 		<div class="cart_grid_container">			
 			<header class="header">
@@ -172,6 +171,5 @@
 						echo '<a href="index.php"><button id="backHome">Home page</button></a>';
 					}
 				?>			
-			</div>
-			
+			</div>			
 <?php include 'footer.php'; ?>
