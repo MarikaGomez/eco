@@ -1,4 +1,4 @@
-eco
+## eco
 Pour la réalisation de ce projet, j'ai travaillé seule.
 
 Il s'agit d'une application web dont le principe s'inspire des sites de e-commerce de produits cosmétiques. 
